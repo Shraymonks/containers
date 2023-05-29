@@ -6,6 +6,7 @@ services:
       - overseerr-radarr
       - prowlarr-radarr
       - radarr-recyclarr
+      - radarr-unmonitorr
     ports:
       - 7878:7878
     volumes:
@@ -26,3 +27,5 @@ networks:
     name: prowlarr-radarr
   radarr-recyclarr:
     name: radarr-recyclarr
+  radarr-unmonitorr:
+    name: radarr-unmonitorr

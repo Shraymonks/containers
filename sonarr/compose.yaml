@@ -6,6 +6,7 @@ services:
       - overseerr-sonarr
       - prowlarr-sonarr
       - recyclarr-sonarr
+      - sonarr-unmonitorr
     ports:
       - 8989:8989
     volumes:
@@ -26,3 +27,5 @@ networks:
     name: prowlarr-sonarr
   recyclarr-sonarr:
     name: recyclarr-sonarr
+  sonarr-unmonitorr:
+    name: sonarr-unmonitorr
