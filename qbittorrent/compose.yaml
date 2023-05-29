@@ -1,0 +1,19 @@
+services:
+  qbittorrent:
+    image: linuxserver/qbittorrent
+    networks:
+      - download-radarr
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /volume1/DS918/Downloads:/DS918/Downloads
+      - /volume2/docker/qbittorrent/config:/config
+    environment:
+      PGID: 100
+      PUID: 1030
+
+networks:
+  download-radarr:
+    name: download-radarr
