@@ -1,0 +1,9 @@
+services:
+  archisteamfarm:
+    image: justarchi/archisteamfarm
+    ports:
+      - '1242:1242'
+    restart: unless-stopped
+    user: '1030:100'
+    volumes:
+      - /volume2/docker/archisteamfarm/config:/app/config
