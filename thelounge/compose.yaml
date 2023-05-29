@@ -1,0 +1,9 @@
+services:
+  thelounge:
+    image: thelounge/thelounge
+    ports:
+      - 9999:9000
+    restart: unless-stopped
+    user: 1030:100
+    volumes:
+      - /volume2/docker/thelounge/thelounge:/var/opt/thelounge
