@@ -1,0 +1,14 @@
+services:
+  recyclarr:
+    image: recyclarr/recyclarr
+    networks:
+      - radarr-recyclarr
+    user: 1030:100
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /volume2/docker/recyclarr/config:/config
+    restart: unless-stopped
+
+networks:
+  radarr-recyclarr:
+    name: radarr-recyclarr

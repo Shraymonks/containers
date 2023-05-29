@@ -5,6 +5,7 @@ services:
       - download-radarr
       - overseerr-radarr
       - prowlarr-radarr
+      - radarr-recyclarr
     ports:
       - 7878:7878
     volumes:
@@ -23,3 +24,5 @@ networks:
     name: overseerr-radarr
   prowlarr-radarr:
     name: prowlarr-radarr
+  radarr-recyclarr:
+    name: radarr-recyclarr
