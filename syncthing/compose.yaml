@@ -1,0 +1,11 @@
+services:
+  syncthing:
+    image: syncthing/syncthing
+    ports:
+      - 8384:8384
+    restart: unless-stopped
+    volumes:
+      - /volume2/docker/syncthing/syncthing:/var/syncthing
+    environment:
+      PGID: 100
+      PUID: 1030
