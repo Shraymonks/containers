@@ -1,6 +1,9 @@
 services:
   radarr:
     image: linuxserver/radarr
+    networks:
+      - download-radarr
+      - overseerr-radarr
     ports:
       - 7878:7878
     volumes:
@@ -11,3 +14,9 @@ services:
     environment:
       PGID: 100
       PUID: 1030
+
+networks:
+  download-radarr:
+    name: download-radarr
+  overseerr-radarr:
+    name: overseerr-radarr

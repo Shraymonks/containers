@@ -1,6 +1,8 @@
 services:
   overseerr:
     image: sctx/overseerr
+    networks:
+      - overseerr-radarr
     ports:
       - 5055:5055
     user: 1030:100
@@ -8,3 +10,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /volume2/docker/overseerr/config:/app/config
     restart: unless-stopped
+
+networks:
+  overseerr-radarr:
+    name: overseerr-radarr
