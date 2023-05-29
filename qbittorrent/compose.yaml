@@ -3,6 +3,7 @@ services:
     image: linuxserver/qbittorrent
     networks:
       - download-radarr
+      - download-sonarr
     ports:
       - 8080:8080
     restart: unless-stopped
@@ -17,3 +18,5 @@ services:
 networks:
   download-radarr:
     name: download-radarr
+  download-sonarr:
+    name: download-sonarr

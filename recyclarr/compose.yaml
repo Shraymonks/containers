@@ -3,6 +3,7 @@ services:
     image: recyclarr/recyclarr
     networks:
       - radarr-recyclarr
+      - recyclarr-sonarr
     user: 1030:100
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -12,3 +13,5 @@ services:
 networks:
   radarr-recyclarr:
     name: radarr-recyclarr
+  recyclarr-sonarr:
+    name: recyclarr-sonarr

@@ -3,6 +3,7 @@ services:
     image: linuxserver/prowlarr
     networks:
       - prowlarr-radarr
+      - prowlarr-sonarr
     ports:
       - 9696:9696
     restart: unless-stopped
@@ -16,3 +17,5 @@ services:
 networks:
   prowlarr-radarr:
     name: prowlarr-radarr
+  prowlarr-sonarr:
+    name: prowlarr-sonarr
