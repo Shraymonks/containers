@@ -2,8 +2,8 @@ services:
   portainer:
     image: portainer/portainer-ee
     ports:
-      - '9000:9000'
+      - 9000:9000
+    restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /volume2/docker/portainer/data:/data
-    restart: unless-stopped

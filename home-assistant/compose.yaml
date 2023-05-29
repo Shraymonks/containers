@@ -2,8 +2,9 @@ services:
   home-assistant:
     image: homeassistant/home-assistant
     ports:
-      - '8123:8123'
+      - 8123:8123
     restart: unless-stopped
+    user: 1030:100
     volumes:
-      - /volume2/docker/home-assistant/config:/config
       - /etc/localtime:/etc/localtime:ro
+      - /volume2/docker/home-assistant/config:/config
