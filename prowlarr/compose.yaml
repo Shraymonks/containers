@@ -1,0 +1,18 @@
+services:
+  prowlarr:
+    image: linuxserver/prowlarr
+    networks:
+      - prowlarr-radarr
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /volume2/docker/prowlarr/config:/config
+    environment:
+      PGID: 100
+      PUID: 1030
+
+networks:
+  prowlarr-radarr:
+    name: prowlarr-radarr
