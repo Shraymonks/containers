@@ -1,0 +1,13 @@
+services:
+  radarr:
+    image: linuxserver/radarr
+    ports:
+      - 7878:7878
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /volume1/DS918:/DS918
+      - /volume2/docker/radarr/config:/config
+    restart: unless-stopped
+    environment:
+      PGID: 100
+      PUID: 1030
