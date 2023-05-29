@@ -3,6 +3,7 @@ services:
     image: containrrr/watchtower
     restart: unless-stopped
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock
     command:
       - adguardhome
@@ -13,5 +14,4 @@ services:
       - recyclarr
       - syncthing
     environment:
-      TZ: America/Los_Angeles
       WATCHTOWER_CLEANUP: true
