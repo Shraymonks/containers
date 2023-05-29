@@ -1,0 +1,7 @@
+services:
+  home-assistant:
+    image: homeassistant/home-assistant
+    restart: unless-stopped
+    volumes:
+      - /volume2/docker/home-assistant/config:/config
+      - /etc/localtime:/etc/localtime:ro
