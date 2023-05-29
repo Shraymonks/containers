@@ -9,7 +9,7 @@ services:
       - autobrr
       - changedetection.io
       - home-assistant
-      - portainer-ce
+      - portainer
       - recyclarr
       - syncthing
     environment:
