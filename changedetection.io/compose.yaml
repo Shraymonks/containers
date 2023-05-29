@@ -1,0 +1,11 @@
+services:
+  changedetection.io:
+    image: dgtlmoon/changedetection.io
+    ports:
+      - 5555:5000
+    restart: unless-stopped
+    volumes:
+      - /volume2/docker/changedetection.io/datastore:/datastore
+    environment:
+      PGID: 100
+      PUID: 1030
