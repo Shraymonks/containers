@@ -1,12 +1,7 @@
 services:
   adguardhome:
     image: adguard/adguardhome
-    ports:
-      - 53:53/tcp
-      - 53:53/udp
-      - 784:784/udp
-      - 853:853/tcp
-      - 3000:3000/tcp
+    network_mode: host
     restart: unless-stopped
     user: 1030:100
     volumes:
