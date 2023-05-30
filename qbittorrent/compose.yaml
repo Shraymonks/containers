@@ -6,6 +6,8 @@ services:
       - download-sonarr
     ports:
       - 8080:8080
+      - 26881:26881/tcp
+      - 26881:26881/udp
     restart: unless-stopped
     volumes:
       - /etc/localtime:/etc/localtime:ro
