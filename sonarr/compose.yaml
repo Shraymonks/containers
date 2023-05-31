@@ -2,7 +2,7 @@ services:
   sonarr:
     image: linuxserver/sonarr:develop
     networks:
-      - download-sonarr
+      - autobrr-sonarr
       - overseerr-sonarr
       - prowlarr-sonarr
       - recyclarr-sonarr
@@ -19,9 +19,8 @@ services:
       PUID: 1030
 
 networks:
-  download-sonarr:
-    name: download-sonarr
-    external: true
+  autobrr-sonarr:
+    name: autobrr-sonarr
   overseerr-sonarr:
     name: overseerr-sonarr
   prowlarr-sonarr:

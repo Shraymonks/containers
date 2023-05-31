@@ -2,8 +2,8 @@ services:
   autobrr:
     image: ghcr.io/autobrr/autobrr
     networks:
-      - download-radarr
-      - download-sonarr
+      - autobrr-radarr
+      - autobrr-sonarr
     ports:
       - 7474:7474
     restart: unless-stopped
@@ -13,9 +13,9 @@ services:
       - /volume2/docker/autobrr/config:/config
 
 networks:
-  download-radarr:
-    name: download-radarr
+  autobrr-radarr:
+    name: autobrr-radarr
     external: true
-  download-sonarr:
-    name: download-sonarr
+  autobrr-sonarr:
+    name: autobrr-sonarr
     external: true

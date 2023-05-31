@@ -2,7 +2,7 @@ services:
   radarr:
     image: linuxserver/radarr
     networks:
-      - download-radarr
+      - autobrr-radarr
       - overseerr-radarr
       - prowlarr-radarr
       - radarr-recyclarr
@@ -19,9 +19,8 @@ services:
       PUID: 1030
 
 networks:
-  download-radarr:
-    name: download-radarr
-    external: true
+  autobrr-radarr:
+    name: autobrr-radarr
   overseerr-radarr:
     name: overseerr-radarr
   prowlarr-radarr:

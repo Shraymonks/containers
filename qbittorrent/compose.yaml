@@ -1,13 +1,7 @@
 services:
   qbittorrent:
     image: linuxserver/qbittorrent
-    networks:
-      - download-radarr
-      - download-sonarr
-    ports:
-      - 8080:8080
-      - 26881:26881/tcp
-      - 26881:26881/udp
+    network_mode: host
     restart: unless-stopped
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -16,9 +10,3 @@ services:
     environment:
       PGID: 100
       PUID: 1030
-
-networks:
-  download-radarr:
-    name: download-radarr
-  download-sonarr:
-    name: download-sonarr
