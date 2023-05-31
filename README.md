@@ -1,3 +1,3 @@
-# compose
+# containers
 
-My compose files.
+My container configs.
