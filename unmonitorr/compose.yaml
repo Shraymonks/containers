@@ -20,5 +20,7 @@ services:
 networks:
   radarr-unmonitorr:
     name: radarr-unmonitorr
+    external: true
   sonarr-unmonitorr:
     name: sonarr-unmonitorr
+    external: true

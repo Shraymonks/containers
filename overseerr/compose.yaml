@@ -15,5 +15,7 @@ services:
 networks:
   overseerr-radarr:
     name: overseerr-radarr
+    external: true
   overseerr-sonarr:
     name: overseerr-sonarr
+    external: true

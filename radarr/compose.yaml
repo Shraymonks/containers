@@ -21,10 +21,12 @@ services:
 networks:
   download-radarr:
     name: download-radarr
+    external: true
   overseerr-radarr:
     name: overseerr-radarr
   prowlarr-radarr:
     name: prowlarr-radarr
+    external: true
   radarr-recyclarr:
     name: radarr-recyclarr
   radarr-unmonitorr:

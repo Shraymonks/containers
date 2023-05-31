@@ -21,10 +21,12 @@ services:
 networks:
   download-sonarr:
     name: download-sonarr
+    external: true
   overseerr-sonarr:
     name: overseerr-sonarr
   prowlarr-sonarr:
     name: prowlarr-sonarr
+    external: true
   recyclarr-sonarr:
     name: recyclarr-sonarr
   sonarr-unmonitorr:

@@ -13,5 +13,7 @@ services:
 networks:
   radarr-recyclarr:
     name: radarr-recyclarr
+    external: true
   recyclarr-sonarr:
     name: recyclarr-sonarr
+    external: true

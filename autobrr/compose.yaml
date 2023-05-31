@@ -15,5 +15,7 @@ services:
 networks:
   download-radarr:
     name: download-radarr
+    external: true
   download-sonarr:
     name: download-sonarr
+    external: true
