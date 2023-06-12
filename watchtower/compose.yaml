@@ -5,13 +5,5 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock
-    command:
-      - adguardhome
-      - autobrr
-      - changedetection.io
-      - home-assistant
-      - portainer
-      - recyclarr
-      - syncthing
     environment:
       WATCHTOWER_CLEANUP: true
