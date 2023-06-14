@@ -4,7 +4,7 @@ services:
     labels:
       - com.centurylinklabs.watchtower.enable=false
     ports:
-      - 9999:9000
+      - 9090:9000
     restart: unless-stopped
     user: 1030:100
     volumes:
