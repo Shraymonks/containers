@@ -27,7 +27,7 @@ services:
       ## Keep configs, scrapers, and plugins here.
       - /volume2/docker/stash/config:/root/.stash
       ## Point this at your collection.
-      - /volume1/DS918/Downloads/Vids:/data:ro
+      - /volume1/DS918:/data:ro
       ## This is where your stash's metadata lives
       - /volume2/docker/stash/metadata:/metadata
       ## Any other cache content.
