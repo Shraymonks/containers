@@ -1,0 +1,48 @@
+# This is an example configuration file that documents all the options.
+# It will need to be modified for your specific use case.
+# Please refer to the link below for more details on how to set up the configuration file
+# https://github.com/StuffAnThings/qbit_manage/wiki/Config-Setup
+
+qbt:
+  # qBittorrent parameters
+  host: ds918:8080
+  user: $USER
+  pass: $PASS
+
+settings:
+  tracker_error_tag: issue # Will set the tag of any torrents that do not have a working tracker.
+  ignoreTags_OnUpdate: # When running tag-update function, it will update torrent tags for a given torrent even if the torrent has at least one or more of the tags defined here. Otherwise torrents will not be tagged if tags exist.
+    - noHL
+    - issue
+    - cross-seed
+
+directory:
+  # Do not remove these
+  # Cross-seed var: </your/path/here/>  # Output directory of cross-seed
+  # root_dir var: </your/path/here/>  # Root downloads directory used to check for orphaned files, noHL, and RecycleBin.
+  # <OPTIONAL> remote_dir var: </your/path/here/>  # Path of docker host mapping of root_dir.
+  # Must be set if you're running qbit_manage locally and qBittorrent/cross_seed is in a docker
+  # <OPTIONAL> recycle_bin var: </your/path/here/>   # Path of the RecycleBin folder. Default location is set to remote_dir/.RecycleBin
+  # <OPTIONAL> torrents_dir var: </your/path/here/>  # Path of the your qbittorrent torrents directory. Required for `save_torrents` attribute in recyclebin
+  # <OPTIONAL> orphaned_dir var: </your/path/here/>  # Path of the the Orphaned Data folder. This is similar to RecycleBin, but only for orphaned data.
+  root_dir: '/DS918/Downloads'
+
+recyclebin:
+  # Recycle Bin method of deletion will move files into the recycle bin (Located in /root_dir/.RecycleBin) instead of directly deleting them in qbit
+  # By default the Recycle Bin will be emptied on every run of the qbit_manage script if empty_after_x_days is defined.
+  enabled: false
+
+orphaned:
+  # Orphaned files are those in the root_dir download directory that are not referenced by any active torrents.
+  # Will automatically remove all files and folders in orphaned data after x days. (Checks every script run)
+  # If this variable is not defined it, the orphaned data will never be emptied.
+  # WARNING: Setting this variable to 0 will delete all files immediately upon script run!
+  # empty_after_x_days: 60
+  # File patterns that will not be considered orphaned files. Handy for generated files that aren't part of the torrent but belong with the torrent's files
+  exclude_patterns:
+    - '**/.DS_Store'
+    - '**/Thumbs.db'
+    - '**/@eaDir'
+    - '/DS918/Downloads/temp/**'
+    - '**/*.!qB'
+    - '**/_unpackerred'
