@@ -1,0 +1,10 @@
+services:
+  kavita:
+    image: kizaing/kavita
+    ports:
+      - 5050:5000
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /volume1/DS918/Books:/Books
+      - /volume2/docker/kavita/config:/kavita/config
