@@ -3,8 +3,9 @@ services:
     image: bobokun/qbit_manage
     restart: unless-stopped
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /volume1/DS918/Downloads:/DS918/Downloads
       - /volume2/docker/qbit_manage/config:/config
     environment:
-      - QBT_TAG_ORPHANED=true
-      - QBT_TAG_TRACKER_ERROR=true
+      QBT_TAG_ORPHANED: true
+      QBT_TAG_TRACKER_ERROR: true
