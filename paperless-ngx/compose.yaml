@@ -90,3 +90,4 @@ services:
       # documents are written in.
       #PAPERLESS_OCR_LANGUAGE: eng
       PAPERLESS_DATE_ORDER: MDY
+      PAPERLESS_URL: https://paperless.shraymonks.com
