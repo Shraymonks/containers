@@ -1,0 +1,92 @@
+x-logging: &default-logging
+  driver: 'json-file'
+  options:
+    max-size: '50m'
+    max-file: '4'
+
+services:
+  proxy:
+    image: nginx:1-alpine
+    ports:
+      # actual and only port facing any connection from outside
+      # Note, change the left number if port 1236 is already in use on your system
+      # You could use port 80 if you won't use a reverse proxy
+      - '8536:8536'
+    volumes:
+      - /volume2/docker/lemmy/nginx_internal.conf:/etc/nginx/nginx.conf:ro,Z
+    restart: unless-stopped
+    logging: *default-logging
+    depends_on:
+      - pictrs
+      - lemmy-ui
+
+  lemmy:
+    image: dessalines/lemmy
+    hostname: lemmy
+    restart: unless-stopped
+    logging: *default-logging
+    environment:
+      RUST_LOG: warn
+    volumes:
+      - /volume2/docker/lemmy/lemmy.hjson:/config/config.hjson:Z
+    depends_on:
+      - postgres
+      - pictrs
+
+  lemmy-ui:
+    image: dessalines/lemmy-ui
+    environment:
+      LEMMY_UI_LEMMY_INTERNAL_HOST: lemmy:8536
+      LEMMY_UI_LEMMY_EXTERNAL_HOST: lemmy.shraymonks.com
+      LEMMY_UI_HTTPS: true
+    volumes:
+      - /volume2/docker/lemmy/lemmy-ui/extra_themes:/app/extra_themes
+    depends_on:
+      - lemmy
+    restart: unless-stopped
+    logging: *default-logging
+
+  pictrs:
+    image: asonix/pictrs:0.4.0-rc.7
+    # this needs to match the pictrs url in lemmy.hjson
+    hostname: pictrs
+    # we can set options to pictrs like this, here we set max. image size and forced format for conversion
+    # entrypoint: /sbin/tini -- /usr/local/bin/pict-rs -p /mnt -m 4 --image-format webp
+    environment:
+      PICTRS_OPENTELEMETRY_URL: http://otel:4137
+      PICTRS__API_KEY: $POSTGRES_PASSWORD
+      RUST_LOG: debug
+      RUST_BACKTRACE: full
+      PICTRS__MEDIA__VIDEO_CODEC: vp9
+      PICTRS__MEDIA__GIF__MAX_WIDTH: 256
+      PICTRS__MEDIA__GIF__MAX_HEIGHT: 256
+      PICTRS__MEDIA__GIF__MAX_AREA: 65536
+      PICTRS__MEDIA__GIF__MAX_FRAME_COUNT: 400
+    user: 991:991
+    volumes:
+      - /volume2/docker/lemmy/pictrs:/mnt:Z
+    restart: unless-stopped
+    logging: *default-logging
+    deploy:
+      resources:
+        limits:
+          memory: 690m
+
+  postgres:
+    image: postgres:15-alpine
+    hostname: postgres
+    environment:
+      POSTGRES_USER: lemmy
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_DB: lemmy
+    volumes:
+      - /volume2/docker/lemmy/postgres:/var/lib/postgresql/data:Z
+    restart: unless-stopped
+    logging: *default-logging
+
+  postfix:
+    image: mwader/postfix-relay
+    environment:
+      POSTFIX_myhostname: lemmy.shraymonks.com
+    restart: unless-stopped
+    logging: *default-logging
