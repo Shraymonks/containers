@@ -1,0 +1,8 @@
+services:
+  homebox:
+    image: ghcr.io/hay-kot/homebox
+    ports:
+      - 7745:7745
+    restart: unless-stopped
+    volumes:
+      - /volume2/docker/homebox/data:/data
