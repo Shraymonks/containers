@@ -1,0 +1,19 @@
+services:
+  cross-seed:
+    image: crossseed/cross-seed
+    command: daemon
+    networks:
+      - prowlarr-cross-seed
+    ports:
+      - 2468:2468
+    restart: unless-stopped
+    user: 1030:100
+    volumes:
+      - /volume2/docker/cross-seed/config:/config
+      - /volume2/docker/cross-seed/cross-seeds:/cross-seeds
+      - /volume2/docker/qbittorrent/config/qBittorrent/BT_backup:/torrents:ro
+
+networks:
+  prowlarr-cross-seed:
+    name: prowlarr-cross-seed
+    external: true
