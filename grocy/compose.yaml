@@ -1,0 +1,12 @@
+services:
+  grocy:
+    image: lscr.io/linuxserver/grocy
+    ports:
+      - 9283:80
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /volume2/docker/grocy/config:/config
+    environment:
+      PGID: 100
+      PUID: 1030
