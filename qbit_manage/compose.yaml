@@ -7,5 +7,5 @@ services:
       - /volume1/DS918/Downloads:/DS918/Downloads
       - /volume2/docker/qbit_manage/config:/config
     environment:
-      QBT_TAG_ORPHANED: true
+      QBT_REM_ORPHANED: true
       QBT_TAG_TRACKER_ERROR: true
