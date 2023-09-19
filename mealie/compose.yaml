@@ -41,7 +41,7 @@ services:
     restart: unless-stopped
 
   postgres:
-    image: postgres
+    image: postgres:15
     restart: unless-stopped
     volumes:
       - /volume2/docker/mealie/pgdata:/var/lib/postgresql/data
