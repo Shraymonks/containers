@@ -8,4 +8,10 @@ services:
       - /volume2/docker/changedetection.io/datastore:/datastore
     environment:
       PGID: 100
+      PLAYWRIGHT_DRIVER_URL: ws://playwright-chrome:3000/?stealth=1&--disable-web-security=true
       PUID: 1030
+
+  playwright-chrome:
+    hostname: playwright-chrome
+    image: browserless/chrome
+    restart: unless-stopped
