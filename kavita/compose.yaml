@@ -1,6 +1,6 @@
 services:
   kavita:
-    image: kizaing/kavita
+    image: jvmilazz0/kavita
     ports:
       - 5050:5000
     restart: unless-stopped
